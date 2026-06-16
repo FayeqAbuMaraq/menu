@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منيو مطعم O2 غزة</title>
+    <title>منيو مطعم O2 غزة </title>
     
     <!-- تحميل خط Cairo لطباعة عربية أنيقة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- تحميل أيقونات FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -55,6 +55,9 @@
         }
 
         /* تأثير التوهج للبطاقات */
+        .glow-hover {
+            transition: all 0.3s ease-in-out;
+        }
         .glow-hover:hover {
             box-shadow: 0 0 15px rgba(229, 9, 20, 0.4);
             border-color: #E50914;
@@ -62,21 +65,21 @@
 
         /* أنيميشن فتح القائمة المنسدلة */
         .accordion-content {
-            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease, opacity 0.3s ease;
             max-height: 0;
             opacity: 0;
             overflow: hidden;
         }
         
         .accordion-content.expanded {
-            max-height: 200px; /* رقم كبير كفاية لاحتواء النص */
+            max-height: 350px;
             opacity: 1;
             padding-top: 1rem;
-            padding-bottom: 1rem;
+            padding-bottom: 1.25rem;
         }
 
         .chevron-icon {
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .expanded-btn .chevron-icon {
             transform: rotate(180deg);
@@ -86,40 +89,53 @@
 </head>
 <body class="antialiased selection:bg-o2red selection:text-white">
 
-    <nav class="fixed w-full z-50 top-0 bg-o2dark/90 backdrop-blur-md border-b border-zinc-800 shadow-lg">
+    <nav class="fixed w-full z-50 top-0 bg-o2dark/95 backdrop-blur-md border-b border-zinc-800 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-            <!-- الشعار في النافبار -->
-            <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <svg width="40" height="40" viewBox="0 0 100 100" class="ml-2">
-                    <!-- الدائرة الخارجية للـ SVG -->
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="#E50914" stroke-width="8"/>
-                    
-                    <!-- تصحيح النص: استخدام وسم text الخاص بـ SVG وتوسيطه عبر text-anchor و dominant-baseline -->
-                    <text x="50" y="55" 
-                        font-family="Arial, sans-serif" 
-                        font-size="42" 
-                        font-weight="bold" 
-                        fill="#E50914" 
-                        text-anchor="middle" 
-                        dominant-baseline="middle">
-                        O<tspan dy="15" font-size="28">2</tspan>
-                    </text>
-                </svg>
-            </div>
+                <!-- الشعار في النافبار -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <svg width="40" height="40" viewBox="0 0 100 100" class="ml-2">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="#E50914" stroke-width="8"/>
+                        <text x="50" y="55" 
+                            font-family="Arial, sans-serif" 
+                            font-size="42" 
+                            font-weight="bold" 
+                            fill="#E50914" 
+                            text-anchor="middle" 
+                            dominant-baseline="middle">
+                            O<tspan dy="15" font-size="28">2</tspan>
+                        </text>
+                    </svg>
+                    <span class="text-xl font-extrabold tracking-wider mr-2 text-white">O<span class="text-o2red">2</span></span>
+                </div>
 
-                
                 <!-- روابط الأقسام (Desktop) -->
-                <div class="hidden md:block">
+                <div class="hidden lg:block">
                     <div class="ml-10 flex items-baseline space-x-4 space-x-reverse">
-                        <a href="#drinks" class="hover:text-o2red hover:bg-zinc-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">المشروبات</a>
-                        <a href="#sweets" class="hover:text-o2red hover:bg-zinc-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">الكيك والحلو</a>
-                        <a href="#sandwiches" class="hover:text-o2red hover:bg-zinc-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">السندوتشات الغربية</a>
-                        <a href="#italian" class="hover:text-o2red hover:bg-zinc-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">القسم الإيطالي</a>
-                        <a href="#shawarma" class="hover:text-o2red hover:bg-zinc-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">الشاورما</a>
+                        <a href="#bar-sweets-drinks" class="hover:text-o2red hover:bg-zinc-900 px-3 py-2 rounded-md text-sm font-semibold transition-colors">مشاريب وحلويات البار</a>
+                        <a href="#cakes" class="hover:text-o2red hover:bg-zinc-900 px-3 py-2 rounded-md text-sm font-semibold transition-colors">قسم الكيك</a>
+                        <a href="#sandwiches" class="hover:text-o2red hover:bg-zinc-900 px-3 py-2 rounded-md text-sm font-semibold transition-colors">السندوتشات الغربية</a>
+                        <a href="#italian" class="hover:text-o2red hover:bg-zinc-900 px-3 py-2 rounded-md text-sm font-semibold transition-colors">القسم الإيطالي</a>
+                        <a href="#shawarma" class="hover:text-o2red hover:bg-zinc-900 px-3 py-2 rounded-md text-sm font-semibold transition-colors">الشاورما</a>
                     </div>
                 </div>
+
+                <!-- زر القائمة للهواتف الذكية -->
+                <div class="flex lg:hidden">
+                    <button id="mobile-menu-btn" type="button" class="text-zinc-400 hover:text-white focus:outline-none focus:text-white p-2 rounded-md" aria-label="Toggle menu">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
             </div>
+        </div>
+
+        <!-- القائمة المنسدلة للهواتف المحمولة -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-o2dark border-b border-zinc-800 px-4 pt-2 pb-6 space-y-1 transition-all duration-300">
+            <a href="#bar-sweets-drinks" class="mobile-link block hover:text-o2red hover:bg-zinc-900 px-4 py-3 rounded-md text-base font-semibold transition-colors">مشاريب وحلويات البار</a>
+            <a href="#cakes" class="mobile-link block hover:text-o2red hover:bg-zinc-900 px-4 py-3 rounded-md text-base font-semibold transition-colors">قسم الكيك</a>
+            <a href="#sandwiches" class="mobile-link block hover:text-o2red hover:bg-zinc-900 px-4 py-3 rounded-md text-base font-semibold transition-colors">السندوتشات الغربية</a>
+            <a href="#italian" class="mobile-link block hover:text-o2red hover:bg-zinc-900 px-4 py-3 rounded-md text-base font-semibold transition-colors">القسم الإيطالي</a>
+            <a href="#shawarma" class="mobile-link block hover:text-o2red hover:bg-zinc-900 px-4 py-3 rounded-md text-base font-semibold transition-colors">الشاورما</a>
         </div>
     </nav>
 
@@ -130,27 +146,20 @@
 
         <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
             <!-- شعار المطعم الكبير -->
-<div class="flex justify-center mb-6 drop-shadow-[0_0_20px_rgba(229,9,20,0.6)]">
-    <svg width="150" height="150" viewBox="0 0 100 100">
-        <!-- الدائرة الخارجية الحمراء -->
-        <circle cx="50" cy="50" r="45" fill="none" stroke="#E50914" stroke-width="6"/>
-        
-        <!-- الدائرة المتقطعة الداخلية البيضاء -->
-        <circle cx="50" cy="50" r="35" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="5,5"/>
-        
-        <!-- حرف O في المنتصف تماماً -->
-        <text x="44" y="62" font-family="Arial, sans-serif" font-weight="900" font-size="40" fill="#E50914" text-anchor="middle">O</text>
-        
-        <!-- رقم 2 السفلي باللون الأحمر -->
-        <text x="68" y="72" font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="#E50914" text-anchor="middle">2</text>
-    </svg>
-</div>
+            <div class="flex justify-center mb-6 drop-shadow-[0_0_25px_rgba(229,9,20,0.7)]">
+                <svg width="150" height="150" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#E50914" stroke-width="6"/>
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="5,5"/>
+                    <text x="44" y="62" font-family="Arial, sans-serif" font-weight="900" font-size="40" fill="#E50914" text-anchor="middle">O</text>
+                    <text x="68" y="72" font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="#E50914" text-anchor="middle">2</text>
+                </svg>
+            </div>
 
             <h1 class="text-5xl md:text-7xl font-black mb-4 tracking-tight text-white">
                 مطعم <span class="text-transparent bg-clip-text bg-gradient-to-r from-o2red to-red-400">O2</span> غزة
             </h1>
             <br>
-            <a href="#drinks" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-o2red rounded-full hover:bg-red-700 hover:scale-105 transition-all shadow-[0_0_20px_rgba(229,9,20,0.4)]">
+            <a href="#bar-sweets-drinks" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-o2red rounded-full hover:bg-red-700 hover:scale-105 transition-all shadow-[0_0_20px_rgba(229,9,20,0.4)]">
                 تصفح المنيو <i class="fa-solid fa-arrow-down mr-3"></i>
             </a>
         </div>
@@ -158,161 +167,33 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
 
-        <!-- القسم الأول: المشروبات -->
-        <section id="drinks" class="scroll-mt-24 relative">
-            <div class="flex items-center gap-4 mb-10">
+        <!-- القسم الأول: مشاريب وحلويات البار -->
+        <section id="bar-sweets-drinks" class="scroll-mt-24 relative text-right">
+            <div class="flex items-center gap-4 mb-8">
                 <div class="w-12 h-12 rounded-full bg-o2red/10 flex items-center justify-center border border-o2red/30">
                     <i class="fa-solid fa-mug-hot text-o2red text-xl"></i>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-white">المشروبات</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">مشاريب وحلويات البار</h2>
                 <div class="h-px bg-gradient-to-l from-o2red/50 to-transparent flex-grow"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
+                <!-- كنافة دبي -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-glass-water text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">عصير الموسم</span>
+                            <i class="fa-solid fa-stroopwafel text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">كنافة دبي</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> عصير طبيعي حسب الموسم</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> طبقة كيك - طبقة بيستاشيو بشعر الكنافة - مغطى بالنوتيلا والبستاشيو.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-seedling text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">عصير أفوكادو</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
-                    </button>
-                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> مكسرات + عسل + أفوكادو</p>
-                    </div>
-                </div>
-
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-snowflake text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">شوكو بارد</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
-                    </button>
-                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> ثلج + شوكو</p>
-                    </div>
-                </div>
-
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-cup-togo text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">ايس كافي</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
-                    </button>
-                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> سكر + ثلج + كافيه + حليب</p>
-                    </div>
-                </div>
-
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-ice-cream text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">ميلك شيك</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
-                    </button>
-                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> حليب + ايس كريم حسب الطعم المطلوب</p>
-                    </div>
-                </div>
-
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-mug-hot text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">كابتشينو</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
-                    </button>
-                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> حليب ثلثين + سبرسو ثلث</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- القسم الثاني: الكيك والحلو -->
-        <section id="sweets" class="scroll-mt-24 relative">
-            <div class="flex items-center gap-4 mb-10 flex-row-reverse">
-                <div class="w-12 h-12 rounded-full bg-o2red/10 flex items-center justify-center border border-o2red/30">
-                    <i class="fa-solid fa-cake-candles text-o2red text-xl"></i>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-white text-left">الكيك والحلو</h2>
-                <div class="h-px bg-gradient-to-r from-o2red/50 to-transparent flex-grow"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-cookie-bite text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">تريلتشا</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
-                    </button>
-                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> كيك مستطيل مسقية بالحليب ويوجد منها اطعم</p>
-                    </div>
-                </div>
-
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-star text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">سوبريم</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
-                    </button>
-                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <!-- <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span>"الاطعم : لوتس - نوتيلا - بيستاشيو" كريمة مطبوخة مع قطع كيك حسب الطعم</p> -->
-                    </div>
-                </div>
-
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-spoon text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">موس </span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
-                    </button>
-                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span>"الاطعم : كيندر- لوتس - نوتيلا - بيستاشيو - فلورا - مانجا - رمان" كريمة مطبوخة + طبقة كيك ناعم</p>
-                    </div>
-                </div>
-
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-crown text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">كيك اسبشل</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
-                    </button>
-                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> قطع كيك مثلث</p>
-                    </div>
-                </div>
-
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
+                                <!-- مولتن كيك -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-4">
                             <i class="fa-solid fa-volcano text-o2red/70 text-lg"></i>
@@ -321,28 +202,352 @@
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> كيك محشية نوتيلا و مطلية شوكولاته نوتيلا يقدم مع ايس كريم</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> قطعة كيك محشوة شوكلاتة بلجيكي - مغطاه بالنوتيلا - بولا آيس كريم فانيلا.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
+                <!-- كيك براونيز -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-4">
                             <i class="fa-solid fa-boxes-stacked text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">براونيز كيك</span>
+                            <span class="text-xl font-bold text-right text-gray-100">كيك براونيز</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <!-- <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> شوكولاته نوتيلا + كيك محشية عين جمل مطلية بشوكولاته بلجيكي</p> -->
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> قطعة كيك محشوة شوكلاتة بلجيكي - مغطاه بطبقة نوتيلا - مكسرات فاخرة مطحونة.</p>
+                    </div>
+                </div>
+
+                <!-- كنافة نوتيلا -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-heart text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">كنافة نوتيلا</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> طبقة شعر كنافة - خليط قشطة مع نوتيلا - مغطاه بطبقة نوتيلا - مكسرات فاخرة مطحونة.</p>
+                    </div>
+                </div>
+
+                <!-- هوت كيك -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-fire-burner text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">هوت كيك</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> قطعة كيك مسقى بالشوكو الساخن - مغطى بالنوتيلا - بولا ايس كريم فانيلا.</p>
+                    </div>
+                </div>
+
+                <!-- موهيتو -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-glass-water text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">موهيتو</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> سيروب نكهة - صودا - ثلج.</p>
+                    </div>
+                </div>
+
+                <!-- كريب دبي -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-scroll text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">كريب دبي</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> عجينة كريب - شعر كنافة مخفوق بالبستاشيو - مغطى بالنوتيلا من الخارج.</p>
+                    </div>
+                </div>
+
+                <!-- آيس شوكلت -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-snowflake text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">آيس شوكلت (شوكو بارد)</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> ثلج - شوكو - حليب.</p>
+                    </div>
+                </div>
+
+                <!-- آيس موكا -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-ice-cream text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">آيس موكا</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> ثلج - اسبرسو - حليب - سيروب شوكلت.</p>
+                    </div>
+                </div>
+
+                <!-- آيس كافي -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-glass-water text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">ايس كافي</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> ثلج - نسكافية - حليب - سكر حسب الطلب.</p>
+                    </div>
+                </div>
+
+                <!-- عصير أفوكادو -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-seedling text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">عصير أفوكادو</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> افوكادو - موز - حليب - مكسرات - عسل.</p>
+                    </div>
+                </div>
+
+                <!-- عصير الموسم -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-glass-water text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">عصير الموسم</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> العصير الطبيعي المتوفر لكل موسم [فراولة-مانجا-جوافة] حسب المتوفر.</p>
+                    </div>
+                </div>
+
+                <!-- كريب -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-cookie text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">كريب</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> عجينة كريب - نوتيلا أو لوتس أو مكس.</p>
+                    </div>
+                </div>
+
+                <!-- وافل ستيك -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-cookie text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">وافل ستيك</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> عجينة وافل - طولية الشكل - نوتيلا أو مكس حسب الطلب.</p>
+                    </div>
+                </div>
+
+                <!-- ميني بان كيك -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-cookie text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">ميني بان كيك</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> عجينة ميني - شكل دائري صغير - سوسير نوتيلا - سوسير لوتس.</p>
+                    </div>
+                </div>
+
+                <!-- ميني فنتشر -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-fish-fins text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">ميني فنتشر</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> عجينة مخبوزة على شكل سمك - سوسير نوتيلا - سوسير لوتس.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- القسم الثاني: قسم الكيك -->
+        <section id="cakes" class="scroll-mt-24 relative text-right">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="w-12 h-12 rounded-full bg-o2red/10 flex items-center justify-center border border-o2red/30">
+                    <i class="fa-solid fa-cake-candles text-o2red text-xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">قسم الكيك الفاخر</h2>
+                <div class="h-px bg-gradient-to-l from-o2red/50 to-transparent flex-grow"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- سوبريم النوتيلا -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-cookie-bite text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">سوبريم النوتيلا</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> كريمة نوتيلا مع طبقات كيك ناعم.</p>
+                    </div>
+                </div>
+
+                <!-- قطع كيك سبشل -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-crown text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">قطع كيك سبشل</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> كيك مافينز محشو بالنوتيلا مغطى بالنوتيلا.</p>
+                    </div>
+                </div>
+
+                <!-- ترليتشا -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-cake-candles text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">ترليتشا</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> كيك تركي مسقى بالحليب المكثف مغطى بنكهات / بلوبيري / شكولاته / كراميل / فراولة.</p>
+                    </div>
+                </div>
+
+                <!-- قالب كيك كلاسيك -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-circle-notch text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">قالب كيك كلاسيك (كبير / صغير)</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> كيك مافينز محشو بالنوتيلا مغطى بنكهات / بلوبيري / شكولاته / كراميل / فراولة.</p>
+                    </div>
+                </div>
+
+                <!-- قالب كيك سبشل -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-gem text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">قالب كيك سبشل (كبير / صغير)</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> كيك مافينز محشو بالنوتيلا مغطى بنكهات النوتيلا / لوتس / بستاشيو.</p>
+                    </div>
+                </div>
+
+                <!-- ميلك شيك -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-blender text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">ميلك شيك</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> آيس كريم حسب الطعم المطلوب (فانيلا / فراولة / نوتيلا ) + حليب مع اضافة النكهة المطلوبة / لوتس / بستاشيو / نوتيلا.</p>
+                    </div>
+                </div>
+
+
+
+                <!-- سوبريم اللوتس -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-cookie-bite text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">سوبريم اللوتس</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> كريمة لوتس مع طبقات بسكويت لوتس ناعم.</p>
+                    </div>
+                </div>
+
+                <!-- تشيز كيك -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-cheese text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">تشيز كيك</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> طبقة بسكويت ناعم + طبقة كريمة ومغطى بلوبيري.</p>
+                    </div>
+                </div>
+
+                <!-- موس كيك -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-spoon text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">موس كيك</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> طبقة كيك ناعم + طبقة كريمة ومغطى بنكهات لوتس / شوكلاته / نوتيلا / مانجا / فراولة.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- القسم الثالث: السندوتشات الغربية -->
-        <section id="sandwiches" class="scroll-mt-24 relative">
-            <div class="flex items-center gap-4 mb-10">
+        <section id="sandwiches" class="scroll-mt-24 relative text-right">
+            <div class="flex items-center gap-4 mb-6">
                 <div class="w-12 h-12 rounded-full bg-o2red/10 flex items-center justify-center border border-o2red/30">
                     <i class="fa-solid fa-burger text-o2red text-xl"></i>
                 </div>
@@ -350,165 +555,202 @@
                 <div class="h-px bg-gradient-to-l from-o2red/50 to-transparent flex-grow"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-6 flex items-center justify-between focus:outline-none">
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-hotdog text-o2red/80 text-2xl"></i>
-                            <span class="text-2xl font-bold text-right text-gray-100">زينجر</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
-                    </button>
-                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-300 text-sm leading-relaxed py-2"><span class="text-o2red font-bold">•</span> مدهونة بصوص البيكانتي + جبنة + بندورة شرائح + خس + قطع صدر مقلي + خبزة برجر</p>
-                    </div>
-                </div>
+            <!-- بطاقة التنبيه للملاحظة الهامة -->
+            <div class="bg-o2red/10 border-r-4 border-o2red p-4 rounded-xl mb-8 flex items-center gap-3 shadow-[0_4px_15px_rgba(229,9,20,0.1)]">
+                <i class="fa-solid fa-circle-info text-o2red text-xl"></i>
+                <p class="text-zinc-200 text-sm md:text-base font-bold">ملاحظة هامة: جميع وجبات قسم الغربي يضاف معها صوص بيكانتي + مخللات + شيبس.</p>
+            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-6 flex items-center justify-between focus:outline-none">
+                <!-- زينجر -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-hotdog text-o2red/80 text-2xl"></i>
-                            <span class="text-2xl font-bold text-right text-gray-100">تشكن فرايز</span>
+                            <i class="fa-solid fa-hotdog text-o2red/80 text-xl"></i>
+                            <span class="text-xl font-bold text-right text-gray-100"> زينجر</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-300 text-sm leading-relaxed py-2"><span class="text-o2red font-bold">•</span> قطع صدر مقلي + بطاطا في الاسفل + صوص رانش + صوص الكاتشب</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> خبزة برجر (فينو) - صوص بيكانتي - خس - شرائح بصل - جبنة برجر - مخلل خيار - بندورة - صدر دجاج كرسبي مقلي.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-6 flex items-center justify-between focus:outline-none">
+                <!-- بيف برجر -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-burger text-o2red/80 text-2xl"></i>
-                            <span class="text-2xl font-bold text-right text-gray-100">بيغ زينجر</span>
+                            <i class="fa-solid fa-burger text-o2red/80 text-xl"></i>
+                            <span class="text-xl font-bold text-right text-gray-100"> بيف برجر</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-300 text-sm leading-relaxed py-2"><span class="text-o2red font-bold">•</span> مدهونة بصوص البيكانتي + جبنة + بندورة شرائح + خس + قطع صدر مقلي 2 + خبزة برجر</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> خبزة برجر (فينو) - بيكانتي - خس - شرائح بصل - بندورة - قطعة لحم عجل مفروم مشوي - جبنة برجر.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-6 flex items-center justify-between focus:outline-none">
+                <!-- بيغ ماك -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-burger text-o2red/80 text-2xl"></i>
-                            <span class="text-2xl font-bold text-right text-gray-100">بيف برجر</span>
+                            <i class="fa-solid fa-hamburger text-o2red/80 text-xl"></i>
+                            <span class="text-xl font-bold text-right text-gray-100"> بيغ ماك</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-300 text-sm leading-relaxed py-2"><span class="text-o2red font-bold">•</span> مدهونة بصوص البيكانتي + جبنة + بندورة شرائح + خس + قطع بيف مشوي + خبزة برجر</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> خبزة برجر - بيكانتي - خس - شرائح بصل - مخلل خيار - بندورة - قطعتين لحم مشوي - جبنة برجر.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-6 flex items-center justify-between focus:outline-none">
+                <!-- تشكن برجر -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-hamburger text-o2red/80 text-2xl"></i>
-                            <span class="text-2xl font-bold text-right text-gray-100">بيغ ماك</span>
+                            <i class="fa-solid fa-circle-dot text-o2red/80 text-xl"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">تشكن برجر</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-300 text-sm leading-relaxed py-2"><span class="text-o2red font-bold">•</span> مدهونة بصوص البيكانتي + جبنة + بندورة شرائح + خس + قطع بيف مشوي 2 + خبزة برجر</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> خبزة برجر - خس - بيكانتي - مخلل خيار - قطعة دجاج مفروم - جبنة برجر.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-6 flex items-center justify-between focus:outline-none">
+                <!-- تشكن بيتزا -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-pizza-slice text-o2red/80 text-2xl"></i>
-                            <span class="text-2xl font-bold text-right text-gray-100">تشكن بيتزا</span>
+                            <i class="fa-solid fa-pizza-slice text-o2red/80 text-xl"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">تشكن بيتزا</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-300 text-sm leading-relaxed py-2"><span class="text-o2red font-bold">•</span> جبنة + صوص كاتشب + خضار + شرائح دجاج + فينو</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> فينو باجيت - شرائح صدر دجاج - فلفل حلو - مشروم - زيتون اسود - بصل - مطبوخ بالكاتشب - جبنة موزريلا.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-6 flex items-center justify-between focus:outline-none">
+                <!-- فطيرة ذهبية -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-drumstick-bite text-o2red/80 text-2xl"></i>
-                            <span class="text-2xl font-bold text-right text-gray-100">شيش طاووق</span>
+                            <i class="fa-solid fa-bread-slice text-o2red/80 text-xl"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">فطيرة ذهبية</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-300 text-sm leading-relaxed py-2"><span class="text-o2red font-bold">•</span> شرائح بندورة + خس + سيخ قطع فخد دجاج + خبزة فينو</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> صاج - شرائح صدر دجاج - فلفل حلو - مشروم - زيتون اسود - bصل - مطبوخ بالكاتشب - جبنة موزريلا - مغطاه بالبقسماط.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-6 flex items-center justify-between focus:outline-none">
+                <!-- باربيكيو -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-bread-slice text-o2red/80 text-2xl"></i>
-                            <span class="text-2xl font-bold text-right text-gray-100">فطيرة ذهبية</span>
+                            <i class="fa-solid fa-fire text-o2red/80 text-xl"></i>
+                            <span class="text-xl font-bold text-right text-gray-100"> باربيكيو</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-300 text-sm leading-relaxed py-2"><span class="text-o2red font-bold">•</span>  بطاطا جانبي + جبنة + خضار + شرائح دجاج + صاج بشكل مربع مقلي بالبقسماط</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> فينو باجيت - قطع صدر دجاج - فلفل اخضر - فلفل حلو - ثوم - بقدونس ناعم - صوص باربيكيو - بندورة - جبنة موزريلا على الوجه مع قطع فلفل اخضر.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-6 flex items-center justify-between focus:outline-none">
+                <!-- بانيه -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-drumstick-bite text-o2red/80 text-2xl"></i>
-                            <span class="text-2xl font-bold text-right text-gray-100">بانيه</span>
+                            <i class="fa-solid fa-drumstick-bite text-o2red/80 text-xl"></i>
+                            <span class="text-xl font-bold text-right text-gray-100"> بانيه</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-300 text-sm leading-relaxed py-2"><span class="text-o2red font-bold">•</span> صاج + صدر دجاج بانيه +صوص بيكانتي + مخلل خيار + بندورة + خس + ( بدون جبنة )</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> باجيت - قطعة صدر بالبقسماط - خس - بيكانتي - مخلل خيار.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-6 flex items-center justify-between focus:outline-none">
+                <!-- بيغ زينجر -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-fire text-o2red/80 text-2xl"></i>
-                            <span class="text-2xl font-bold text-right text-gray-100">ستيك دجاج مشوي</span>
+                            <i class="fa-solid fa-burger text-o2red/80 text-xl"></i>
+                            <span class="text-xl font-bold text-right text-gray-100"> بيغ زينجر</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-300 text-sm leading-relaxed py-2"><span class="text-o2red font-bold">•</span> صاج عراقي +صدر دجاج مشوي + صوص بيكانتي + مخلل خيار + بندورة + خس + جبنة</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> تفاصيل س/ الزينجر المعتادة وبحجم مضاعف ×2 دجاج كرسبي مقلي.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-6 flex items-center justify-between focus:outline-none">
+                <!-- تشكين فرايز -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-fire-burner text-o2red/80 text-2xl"></i>
-                            <span class="text-2xl font-bold text-right text-gray-100">باربيكيو</span>
+                            <i class="fa-solid fa-arrow-trend-up text-o2red/80 text-xl"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">تشكين فرايز</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-300 text-sm leading-relaxed py-2"><span class="text-o2red font-bold">•</span> فينو + صدر دجاج + ثوم + فلفل اخضر + بندورة + بقدونس + صوص باربيكيو + جبنة</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> قطع دجاج كرسبي مقلي + بطاطا (شيبس) في الأسفل + صوص رانش + صوص باربيكيو + فلفل هلابينو حار.</p>
+                    </div>
+                </div>
+
+                <!-- شيش طاووق -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-circle-nodes text-o2red/80 text-xl"></i>
+                            <span class="text-xl font-bold text-right text-gray-100"> شيش طاووق</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> شرائح بندورة + خس + سيخ قطع فخد دجاج مشوي + خبزة فينو.</p>
+                    </div>
+                </div>
+
+                <!-- ستيك دجاج مشوي -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-fire-burner text-o2red/80 text-xl"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">ستيك دجاج مشوي</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> صاج عراقي + صدر دجاج مشوي + صوص بيكانتي + مخلل خيار + بندورة + خس + جبنة.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- القسم الرابع: القسم الإيطالي -->
-        <section id="italian" class="scroll-mt-24 relative">
-            <div class="flex items-center gap-4 mb-10 flex-row-reverse">
+        <section id="italian" class="scroll-mt-24 relative text-right">
+            <div class="flex items-center gap-4 mb-6">
                 <div class="w-12 h-12 rounded-full bg-o2red/10 flex items-center justify-center border border-o2red/30">
                     <i class="fa-solid fa-pizza-slice text-o2red text-xl"></i>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-white text-left">القسم الإيطالي</h2>
-                <div class="h-px bg-gradient-to-r from-o2red/50 to-transparent flex-grow"></div>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">القسم الإيطالي</h2>
+                <div class="h-px bg-gradient-to-l from-o2red/50 to-transparent flex-grow"></div>
+            </div>
+
+            <!-- بطاقة التنبيه للملاحظة الهامة للقسم الإيطالي -->
+            <div class="bg-o2red/10 border-r-4 border-o2red p-4 rounded-xl mb-8 flex items-center gap-3 shadow-[0_4px_15px_rgba(229,9,20,0.1)]">
+                <i class="fa-solid fa-bell text-o2red text-xl"></i>
+                <p class="text-zinc-200 text-sm md:text-base font-bold">ملاحظة هامة: جميع وجبات قسم الإيطالي يضاف معها صوص رانش + مخللات.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
+                <!-- كاليزوني دجاج -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-pizza-slice text-o2red/70 text-lg"></i>
@@ -517,11 +759,12 @@
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> زيتون اسود + صوص رانش + جبنة + قطع صدر دجاج</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> عجينة ايطالية - قطع صدر دجاج - جبنة موزريلا - زيتون اسود - صوص رانش - رشة شطة + يقدم مع شيبس.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
+                <!-- كاليزوني خضار -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-leaf text-o2red/70 text-lg"></i>
@@ -530,11 +773,26 @@
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> رانش + جبنة + خضار مشكل</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> فلفل حلو - بصل - ذرة - زيتون اسود - مشروم - صوص رانش - جبنة موزريلا.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
+                <!-- بيتزا خضار -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-carrot text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">بيتزا خضار</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> عجينة ايطالية - صلصة ايطالية - جبنة موزريلا - فلفل حلو - مشروم - زيتون اسود - ذرة.</p>
+                    </div>
+                </div>
+
+                <!-- بيتزا مكسيكي دجاج -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-pepper-hot text-o2red/70 text-lg"></i>
@@ -543,37 +801,96 @@
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> شطة حارة + زيتون اسود + قطع صدر دجاج + جبنة + صلصة</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> عجينة ايطالية - صلصة ايطالية - جبنة موزريلا - زيتون اسود - قطع صدر دجاج - شطة.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
+                <!-- بيتزا سلامي -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-bowl-food text-o2red/70 text-lg"></i>
+                            <i class="fa-solid fa-circle text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">بيتزا سلامي</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> عجينة ايطالية - صلصة ايطالية - جبنة موزريلا - قطع مرتديلا سلامي.</p>
+                    </div>
+                </div>
+
+                <!-- بيتزا هلابينو -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-pepper-hot text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">بيتزا هلابينو</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> عجينة ايطالية - صلصة ايطالية - جبنة موزريلا - قطع مرتديلا سلامي - شرائح فلفل أصفر حار.</p>
+                    </div>
+                </div>
+
+                <!-- ميجا -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-cube text-o2red/70 text-lg"></i>
                             <span class="text-xl font-bold text-right text-gray-100">ميجا</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> جبنة + زيتون اسود + وايت صوص + جرادة خضراء + مشروم + شرائح فلفل حلو + صدر دجاج مقطع</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> عجينة ايطالية مستطيلة - قطع صدر دجاج - جرادة خضرا - فلفل حلو - بصل - مشروم مطبوخ بالوايت صوص- جبنة - زيتون اسود + يقدم مع شيبس.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
+                <!-- بيتزا مارجريتا -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-carrot text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">بيتزا بالخضار</span>
+                            <i class="fa-solid fa-circle-dot text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">بيتزا مرجريتا</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> خضار + جبنة + صلصة</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> بيتزا سادة من العجينة والصلصة الإيطالية والجبنة فقط بدون أي إضافات.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
+                <!-- بيتزا نابولي -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-fish text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">بيتزا نابولي</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> عجينة ايطالية - صلصة - موزريلا - تونة - زيتون اسود.</p>
+                    </div>
+                </div>
+
+                <!-- بيتزا ماما روزا -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-lemon text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">بيتزا ماما روزا بالأناناس</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> مواصفات اساس البيتزا الإيطالية بالكامل - يضاف على الوجه قطع أناناس شهية.</p>
+                    </div>
+                </div>
+
+                <!-- بيتزا بالذرة -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-seedling text-o2red/70 text-lg"></i>
@@ -582,67 +899,29 @@
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> ذرة + جبنة + صلصة</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> ذرة حلوة + جبنة موزريلا غنية + صلصة إيطالية مميزة.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
+                <!-- بيتزا بالزيتون -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle-dot text-o2red/70 text-lg"></i>
+                            <i class="fa-solid fa-circle text-o2red/70 text-lg"></i>
                             <span class="text-xl font-bold text-right text-gray-100">بيتزا بالزيتون</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> زيتون + جبنة + صلصة</p>
-                    </div>
-                </div>
-
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-lemon text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">بيتزا ماما روزا بلاناناس</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
-                    </button>
-                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> اناناس + جبنة + صلصة</p>
-                    </div>
-                </div>
-
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-fish text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">نابولي</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
-                    </button>
-                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> تونة + جبنة + صلصة</p>
-                    </div>
-                </div>
-
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
-                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">مارجريتا</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
-                    </button>
-                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> (سادة) جبنة + صلصة</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> شرائح زيتون اسود وأخضر + جبنة موزريلا + صلصة إيطالية.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- القسم الخامس: الشاورما -->
-        <section id="shawarma" class="scroll-mt-24 relative">
-            <div class="flex items-center gap-4 mb-10">
+        <section id="shawarma" class="scroll-mt-24 relative text-right">
+            <div class="flex items-center gap-4 mb-6">
                 <div class="w-12 h-12 rounded-full bg-o2red/10 flex items-center justify-center border border-o2red/30">
                     <i class="fa-solid fa-fire text-o2red text-xl"></i>
                 </div>
@@ -650,34 +929,71 @@
                 <div class="h-px bg-gradient-to-l from-o2red/50 to-transparent flex-grow"></div>
             </div>
 
+            <!-- بطاقة التنبيه للملاحظة الهامة للقسم الشاورما -->
+            <div class="bg-o2red/10 border-r-4 border-o2red p-4 rounded-xl mb-8 flex items-center gap-3 shadow-[0_4px_15px_rgba(229,9,20,0.1)]">
+                <i class="fa-solid fa-circle-exclamation text-o2red text-xl"></i>
+                <p class="text-zinc-200 text-sm md:text-base font-bold">ملاحظة هامة: جميع وجبات قسم الشاورما يضاف معها طحينة + مخللات.</p>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
+                <!-- سوري -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-utensils text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">سوري</span>
+                            <span class="text-xl font-bold text-right text-gray-100">شاورما سوري</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> بطاطا جانبي  + شاورما بصاج</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> صاج - شاورما - طحينة - محمصة على التوست ويضاف لها شيبس جانبي.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
+                <!-- صفيحة -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-square text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">صفيحة</span>
+                            <span class="text-xl font-bold text-right text-gray-100">صفيحة شاورما</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> بطاطا جانبي + زتون + جبنة + شاورما + صاج بشكل مربع</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> صاج - شاورما - جبنة موزريلا - زيتون اسود - محمصة ومقرمشة ويضاف لها شيبس.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
+                <!-- باشكا -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-box text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">شاورما باشكا</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> خبزة برجر كبيرة - بيكانتي - شاورما - جبنة - زيتون اسود - في الفرن - محمصة ويضاف لها شيبس.</p>
+                    </div>
+                </div>
+
+                <!-- بيجي -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-bread-slice text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">شاورما بيجي</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> خبزة فينو بيضاوية الشكل - بيكانتي - شاورما - جبنة - طحينة - زيتون اسود - محمصة على التوست ويضاف لها شيبس.</p>
+                    </div>
+                </div>
+
+                <!-- شاورما عربي -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-cutlery text-o2red/70 text-lg"></i>
@@ -686,11 +1002,12 @@
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> بطاطا جانبي + شاورما بصاج مقطعة بشكل اساور + جبنة</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> صاج - شاورما - تقطع لدوائر متناسقة - جبنة موزريلا ذائبة ويضاف لها شيبس.</p>
                     </div>
                 </div>
 
-                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover transition-all duration-300">
+                <!-- شاورما نابلسي -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-plate-wheat text-o2red/70 text-lg"></i>
@@ -699,7 +1016,49 @@
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
                     <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
-                        <p class="text-zinc-400 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> شاورما بصحن + بطاطا في الأسفل + جبنة</p>
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> بيكانتي - شيبس - شاورما - جبنة - 2 فراشيح صاج عراقي فاخر.</p>
+                    </div>
+                </div>
+
+                <!-- شاورما عادي -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-scale-balanced text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">شاورما عادي (140 غرام)</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> وجبة شاورما محددة بوزن صافي 140 غرام من اللحم المتبل.</p>
+                    </div>
+                </div>
+
+                <!-- شاورما دبل لحمة -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-scale-unbalanced-flip text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">شاورما دبل لحمة (170-180 غرام)</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> وجبة دبل من اللحم بوزن يتراوح بين 170 إلى 180 غرام.</p>
+                    </div>
+                </div>
+
+                <!-- صحن شاورما -->
+                <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
+                    <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-notch text-o2red/70 text-lg"></i>
+                            <span class="text-xl font-bold text-right text-gray-100">صحن شاورما (250 غرام)</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-900/50 px-6 border-t border-zinc-800/50">
+                        <p class="text-zinc-300 text-sm leading-relaxed"><span class="text-o2red font-bold">•</span> صحن شاورما بوزن صافي يبلغ 250 غرام.</p>
                     </div>
                 </div>
             </div>
@@ -707,28 +1066,55 @@
 
     </main>
 
-    <footer class="bg-black py-10 border-t border-zinc-900 mt-20">
+    <footer class="bg-black py-12 border-t border-zinc-900 mt-20">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <div class="flex justify-center mb-6">
                 <svg width="60" height="60" viewBox="0 0 100 100" class="grayscale hover:grayscale-0 transition-all duration-500">
                     <circle cx="50" cy="50" r="45" fill="none" stroke="#E50914" stroke-width="8"/>
-                    <text x="50" y="60" font-family="Arial" font-weight="bold" font-size="40" fill="#ffffff" text-anchor="middle">O</text>
-                    <text x="75" y="75" font-family="Arial" font-weight="bold" font-size="25" fill="#E50914" text-anchor="middle">2</text>
+                    <text x="50" y="55" font-family="Arial" font-weight="bold" font-size="40" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">O<tspan dy="12" font-size="24" fill="#E50914">2</tspan></text>
                 </svg>
             </div>
-            <p class="text-zinc-500 mb-4 font-semibold">مطعم O2 غزة - كل ما تحتاجه لتجربة طعام لا تُنسى</p>
-            <div class="flex justify-center space-x-6 space-x-reverse mb-6">
-                <a href="#" class="text-zinc-600 hover:text-o2red text-2xl transition-colors"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="text-zinc-600 hover:text-o2red text-2xl transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="text-zinc-600 hover:text-o2red text-2xl transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+            <p class="text-zinc-400 mb-2 font-bold text-lg">مطعم O2 غزة</p>
+            <p class="text-zinc-500 mb-6 font-semibold">كل ما تحتاجه لتجربة طعام أصيلة ومذاق لا يُنسى</p>
+            <div class="flex justify-center space-x-6 space-x-reverse mb-8">
+                <a href="#" class="text-zinc-500 hover:text-o2red text-2xl transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="text-zinc-500 hover:text-o2red text-2xl transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="text-zinc-500 hover:text-o2red text-2xl transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
-            <p class="text-xs text-zinc-700">&copy; 2026 مطعم O2 غزة. جميع الحقوق محفوظة.</p>
+            <p class="text-xs text-zinc-700">&copy; 2026 مطعم O2 غزة. جميع الحقوق محفوظة لتطوير المنيو الإلكتروني التفاعلي.</p>
         </div>
     </footer>
 
-    <!-- سكربت التحكم بالقوائم المنسدلة (الأكورديون) -->
+    <!-- سكربت التحكم بالقوائم المنسدلة (الأكورديون) التفاعلية والقائمة المتنقلة -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // منطق تشغيل القائمة الجانبية للهواتف الذكية (Mobile Menu Drawer)
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        icon.classList.replace('fa-xmark', 'fa-bars');
+                    } else {
+                        icon.classList.replace('fa-bars', 'fa-xmark');
+                    }
+                });
+
+                // إغلاق القائمة بمجرد الضغط على أي رابط قسم داخلي
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.replace('fa-xmark', 'fa-bars');
+                    });
+                });
+            }
+
+            // تشغيل الأكورديون للبطاقات
             const accordions = document.querySelectorAll('.accordion-btn');
 
             accordions.forEach(btn => {
@@ -738,10 +1124,10 @@
                     const content = this.nextElementSibling;
                     content.classList.toggle('expanded');
                     
-                    // تغيير لون الزر للإشارة بأنه مفتوح
+                    // تغيير لون الإطار وإضافة ظل خفيف للإشارة إلى العنصر المفتوح
                     if (this.classList.contains('expanded-btn')) {
                         this.parentElement.classList.add('border-o2red');
-                        this.parentElement.style.boxShadow = '0 0 15px rgba(229, 9, 20, 0.2)';
+                        this.parentElement.style.boxShadow = '0 0 15px rgba(229, 9, 20, 0.3)';
                     } else {
                         this.parentElement.classList.remove('border-o2red');
                         this.parentElement.style.boxShadow = 'none';
