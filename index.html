@@ -138,6 +138,7 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
 
+        <!-- قسم مشاريب وحلويات البار -->
         <section id="bar-sweets-drinks" class="scroll-mt-24 relative text-right">
             <div class="flex items-center gap-4 mb-8">
                 <div class="w-12 h-12 rounded-full bg-o2red/10 flex items-center justify-center border border-o2red/30">
@@ -484,7 +485,7 @@
                     </div>
                 </div>
 
-                <!-- ميني فنتشر -->
+                <!-- ميني فيشز -->
                 <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-4">
@@ -507,6 +508,7 @@
             </div>
         </section>
 
+        <!-- قسم الكيك -->
         <section id="cakes" class="scroll-mt-24 relative text-right">
             <div class="flex items-center gap-4 mb-8">
                 <div class="w-12 h-12 rounded-full bg-o2red/10 flex items-center justify-center border border-o2red/30">
@@ -622,8 +624,6 @@
                     </div>
                 </div>
 
-
-
                 <!-- سوبريم اللوتس -->
                 <div class="bg-o2card border border-zinc-800 rounded-xl overflow-hidden glow-hover">
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
@@ -689,6 +689,7 @@
             </div>
         </section>
 
+        <!-- قسم السندوتشات الغربية -->
         <section id="sandwiches" class="scroll-mt-24 relative text-right">
             <div class="flex items-center gap-4 mb-6">
                 <div class="w-12 h-12 rounded-full bg-o2red/10 flex items-center justify-center border border-o2red/30">
@@ -958,6 +959,7 @@
             </div>
         </section>
 
+        <!-- القسم الإيطالي -->
         <section id="italian" class="scroll-mt-24 relative text-right">
             <div class="flex items-center gap-4 mb-6">
                 <div class="w-12 h-12 rounded-full bg-o2red/10 flex items-center justify-center border border-o2red/30">
@@ -1227,6 +1229,7 @@
             </div>
         </section>
 
+        <!-- الشاورما -->
         <section id="shawarma" class="scroll-mt-24 relative text-right">
             <div class="flex items-center gap-4 mb-6">
                 <div class="w-12 h-12 rounded-full bg-o2red/10 flex items-center justify-center border border-o2red/30">
@@ -1310,7 +1313,7 @@
                     <button class="accordion-btn w-full px-6 py-5 flex items-center justify-between focus:outline-none">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-bread-slice text-o2red/70 text-lg"></i>
-                            <span class="text-xl font-bold text-right text-gray-100">شاورما بيجي</span>
+                            <span class="text-xl font-bold text-right text-gray-100">شاورما ببجي</span>
                         </div>
                         <i class="fa-solid fa-chevron-down chevron-icon text-zinc-500"></i>
                     </button>
@@ -1319,7 +1322,7 @@
                             <div class="absolute inset-0 flex items-center justify-center bg-zinc-950/80 shimmer-loader text-zinc-500">
                                 <i class="fa-solid fa-circle-notch fa-spin text-o2red text-2xl"></i>
                             </div>
-                            <img data-src="" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='60'></svg>" alt="شاورما بيجي" class="meal-img w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();">
+                            <img data-src="" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='60'></svg>" alt="شاورما ببجي" class="meal-img w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();">
                         </div>
                         <h4 class="text-o2red font-bold text-sm mb-1">المكونات:</h4>
                         <p class="text-zinc-300 text-sm leading-relaxed">خبزة فينو بيضاوية الشكل - بيكانتي - شاورما - جبنة - طحينة - زيتون اسود - محمصة على التوست ويضاف لها شيبس.</p>
@@ -1451,6 +1454,11 @@
         </div>
     </footer>
 
+    <!-- زر العودة للأعلى -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 z-50 bg-o2red text-white w-12 h-12 rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(229,9,20,0.4)] transition-all duration-300 opacity-0 translate-y-10 pointer-events-none hover:bg-red-700 hover:scale-110 active:scale-95" aria-label="العودة للأعلى">
+        <i class="fa-solid fa-arrow-up text-lg"></i>
+    </button>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -1500,6 +1508,22 @@
                     }
                 });
             });
+
+            // منطق زر العودة للأعلى
+            const backToTopBtn = document.getElementById('back-to-top');
+            if (backToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 400) {
+                        backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                    } else {
+                        backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                    }
+                });
+                
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
         });
     </script>
 </body>
